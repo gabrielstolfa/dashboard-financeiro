@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro Pessoal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+   
+   
+  <script type="module" crossorigin src="/assets/index-DsOuILHT.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CQ-_kCUo.css">
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+       <figure>
+        <img src="/assets/pig-JbBq-1nI.jpg" alt="cofrinho-porco">
+       </figure>
+    </header>
+    <p class="subtitle">Bem-vindo! Entre para gerenciar suas finanças.</p>
+
+    <main>
+        <section id="loginSection" class="show">
+            <label for="userName">Nome de usuário:</label>
+            <input type="text" id="userName" name="user" placeholder="Digite o usuário" required>
+
+            <label for="userPassword">Senha:</label>
+
+            <div class="passwordDiv" id="passwordDivOne">
+            <input type="password" id="userPassword" name="user" required placeholder="Digite a senha">
+            <span class="material-symbols-outlined">
+              visibility
+            </span>
+            </div>
+
+            <button id="loginBtn">Entrar</button>
+            <button id="createUserBtn">Novo Usuário</button>
+            <p class="msgError"></p>
+        </section>
+
+        <section id="createUserSection" class="hidden">
+            <label for="newUserName">Novo usuário:</label>
+            <input type="text" id="newUserName" name="newUser" required placeholder="Digite o nome de Usuário">
+
+            <label for="newUserPassword">Nova senha:</label>
+
+            <div class="passwordDiv" id="passwordDivTwo">
+            <input type="password" id="newUserPassword" name="newUser" 
+            required placeholder="Digite a nova senha">
+             <span id="togglePassword" class="material-symbols-outlined">visibility</span>
+            </div>         
+            <button id="saveNewUserBtn">Cadastrar</button>
+            <button id="backToLoginBtn">Voltar</button>
+            <p class="msgError" id="errorAcount"></p>
+        </section>
+
+    </main>
+    </div>
+</body>
+</html>
