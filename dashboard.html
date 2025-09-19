@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Financeiro</title>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <!-- CSS compilado pelo Vite -->
+    <link rel="stylesheet" href="./assets/index-CQ-_kCUo.css" crossorigin />
+
+    <!-- JS compilado pelo Vite -->
+    <script type="module" src="./assets/index-DsOuILHT.js" defer crossorigin></script>
+</head>
+<body>
+    <header>
+      <div id="namePersonDiv">
+        <h1 id="namePerson"></h1>
+        <div id="logoutDiv">
+        <button id="logoutBtn">Sair</button>
+      </div>
+      </div>
+    </header>
+
+    <main>
+        <!----------CARDS------------>
+        <section id="financialSummary">
+          
+            <div class="card" id="entriesCard">
+              <div class="info">
+                <h3>Entradas</h3>
+                <span class="material-symbols-outlined" id="entrieSimbol">
+                 arrow_upward
+                </span>
+                </div>
+                <p class="money" id="showEntriesMoney">R$0</p>
+            </div>
+
+            <div class="card" id="outsCard">
+              <div class="info">
+                <h3>Saídas</h3>  
+                 <span class="material-symbols-outlined" id="outSimbol">
+                  arrow_downward
+                </span>
+              </div>
+              <p class="money" id="showOutsMoney">R$0</p>
+            </div>
+
+            <div class="card" id="balanceCard">
+              <div class="info">
+                <h3>Saldo</h3>
+                <span class="material-symbols-outlined" id="balanceSimbol">
+                attach_money
+                </span>
+                </div>
+                <p class="money" id="showBalanceMoney">R$0</p>
+            </div>
+        </section>
+
+        <!---------- Gráficos ----------->
+      <section id="graphsSection">
+      <div class="chartCard">
+          <canvas id="balanceChart"></canvas>
+      </div>
+      <div class="chartCard">
+          <canvas id="categoryChart"></canvas>
+      </div>
+      </section>
+        <!-----------Lista-------------->
+     <section id="transactionSection">
+    <h3>Transações</h3>
+
+    <!-- Filtros -->
+    <div id="filtersDiv">
+        <label for="monthInput">Escolha o mês:</label>
+        <input type="month" id="monthInput">
+
+        <label for="typeSelect">Tipo:</label>
+        <select id="typeSelect">
+            <option value="all">Todos os tipos</option>
+            <option value="entrada">Entradas</option>
+            <option value="saida">Saídas</option>
+        </select>
+
+        <label for="categorySelect">Categoria:</label>
+        <select id="categorySelect">
+            <option value="all">Todas as categorias</option>
+            <option value="salario">Salário</option>
+            <option value="freelance">Freelance / Trabalho Extra</option>
+            <option value="venda">Venda de Produtos / Serviços</option>
+            <option value="investimentos">Investimentos / Juros</option>
+            <option value="presente">Presente / Outras Receitas</option>
+            <option value="mercado">Mercado / Alimentação</option>
+            <option value="transporte">Transporte / Combustível</option>
+            <option value="lazer">Lazer / Entretenimento</option>
+            <option value="contas">Contas / Serviços</option>
+            <option value="saude">Saúde / Farmácia</option>
+            <option value="educacao">Educação / Cursos</option>
+            <option value="roupas">Roupas / Compras</option>
+            <option value="outras">Outras Despesas</option>
+        </select>
+    </div>
+
+    <!-- Listas -->
+    <div id="entriesDiv" class="listDiv">
+        <h4>Entradas</h4>
+        <ul id="entriesList"></ul>
+    </div>
+
+    <div id="outiesDiv" class="listDiv">
+        <h4>Saídas</h4>
+        <ul id="outiesList"></ul>
+    </div>
+</section>
+        <!-----------Adicionar Transações---------->
+       <section id="actionSection">
+
+  <!-- Botão Adicionar Receita e Despesa -->
+  <button id="addEntriesBtn">Adicionar Receita</button>
+   <button id="addOutsBtn">Adicionar Despesa</button>
+  <!-- Formulário Receita (oculto inicialmente) -->
+  <form id="entriesForm" class="hidden">
+    <label for="entryCategory">Categoria:</label>
+    <select id="entryCategory" required>
+      <option value="" disabled selected>Selecione a categoria</option>
+      <option value="salario">Salário</option>
+      <option value="freelance">Freelance / Trabalho Extra</option>
+      <option value="venda">Venda de Produtos / Serviços</option>
+      <option value="investimentos">Investimentos / Juros</option>
+      <option value="presente">Presente / Outras Receitas</option>
+    </select>
+
+    <label for="entryDescription">Descrição:</label>
+    <input type="text" id="entryDescription" placeholder="Descrição" required>
+
+    <label for="entryValue">Valor:</label>
+    <input type="number" id="entryValue" placeholder="Valor" required>
+
+    <label for="entryDate">Data:</label>
+    <input type="date" id="entryDate" required>
+
+    <span class="saveBtnForm">
+    <button type="button" id="saveEntriesBtn">Salvar Receita</button>
+    </span>
+  </form>
+  
+
+  <!-- Formulário Despesa (oculto inicialmente) -->
+  <form id="outsForm" class="hidden">
+    <label for="outCategory">Categoria:</label>
+    <select id="outCategory" required>
+      <option value="" disabled selected>Selecione a categoria</option>
+      <option value="mercado">Mercado / Alimentação</option>
+      <option value="transporte">Transporte / Combustível</option>
+      <option value="lazer">Lazer / Entretenimento</option>
+      <option value="contas">Contas / Serviços</option>
+      <option value="saude">Saúde / Farmácia</option>
+      <option value="educacao">Educação / Cursos</option>
+      <option value="roupas">Roupas / Compras</option>
+      <option value="outras">Outras Despesas</option>
+    </select>
+
+    <label for="outDescription">Descrição:</label>
+    <input type="text" id="outDescription" placeholder="Descrição" required>
+
+    <label for="outValue">Valor:</label>
+    <input type="number" id="outValue" placeholder="Valor" required>
+
+    <label for="outDate">Data:</label>
+    <input type="date" id="outDate" required>
+
+    <span class="saveBtnForm">
+    <button type="button" id="saveOutiesBtn">Salvar Despesa</button>
+    </span>
+  </form>
+    </section>
+
+  </main>
+</body>
+</html>
